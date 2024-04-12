@@ -11,11 +11,13 @@ namespace recipeMaker
 
         public class Recipe
         {
-            string[] ingrendients;
+            // array declaration for steps and ingredients 
+            string[] ingredients;
             string[] steps;
         }
 
-        public void recipeCreator()
+ //method to create recipe
+  public void recipeCreator()      
         {
             Console.WriteLine("Please enter Number of ingredients: ");
 
@@ -26,12 +28,27 @@ namespace recipeMaker
 
                 int ingNum = int.Parse(ingNumString);
 
+//for loop that prompts user depending on how many ingredients they enter
+for (int i= 1; i <= ingNum; i++){
 
-for (int i= 0; i < ingNum; i++){
-         
+
+                    Console.WriteLine($"Ingredient {i} ");
+
+                    Console.WriteLine("Please enter the ingredient name: ");
+                    Console.ReadLine();
+
+                    Console.WriteLine("Please enter the ingredient quantity: ");
+                    Console.ReadLine();
+
+                    Console.WriteLine("Please enter the unit of measurement(Tablespoon...etc): ");
+                    Console.ReadLine();
 
 
-            }
+                    Console.Clear(); 
+                    
+
+
+                }
 
             
 
@@ -41,6 +58,23 @@ for (int i= 0; i < ingNum; i++){
             
             }
 
+
+            //prompt user to enter steps
+            Console.WriteLine("Enter number of Steps");
+
+            string stepsNum = Console.ReadLine();
+
+            int stepNum = int.Parse(stepsNum);
+
+            //loops depending on number of steps
+            for(int i=1; i <= stepNum; i++) 
+            { 
+            Console.WriteLine($"Step {i} ");
+         
+                
+
+
+            }
 
         }
         
