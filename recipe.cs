@@ -58,6 +58,9 @@ namespace recipeMaker
                     string ingredientMeasurement=Console.ReadLine();
 
 
+
+                        ingredients[i] ="${ingredientName}";
+
                     Console.Clear();
 
 
@@ -81,11 +84,12 @@ namespace recipeMaker
 
             int stepNum = int.Parse(stepsNum);
 
+                steps = new string[stepNum];    
             //loops depending on number of steps
             for (int i = 1; i <= stepNum; i++)
             {
                 Console.WriteLine($"Step {i} ");
-                Console.ReadLine();
+                steps[i]=Console.ReadLine();
 
 
             }
