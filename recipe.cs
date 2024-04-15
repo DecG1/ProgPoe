@@ -14,48 +14,63 @@ namespace recipeMaker
             // array declaration for steps and ingredients 
             string[] ingredients;
             string[] steps;
-        }
 
- //method to create recipe
-  public void recipeCreator()      
+
+            public void RecipeStorage()
+            {
+
+                ingredients = new string[0];
+                steps = new string[0];  
+
+
+            }
+
+
+        //method to create recipe
+        public void recipeCreator()
         {
-            Console.WriteLine("Please enter Number of ingredients: ");
-
 
             try
             {
+
+                Console.WriteLine("Please enter Number of ingredients: ");
+
                 string ingNumString = Console.ReadLine();
 
                 int ingNum = int.Parse(ingNumString);
 
-//for loop that prompts user depending on how many ingredients they enter
-for (int i= 1; i <= ingNum; i++){
+                ingredients=new string[ingNum];
+               
+                //for loop that prompts user depending on how many ingredients they enter
+                for (int i = 1; i <= ingNum; i++)
+                {
 
 
                     Console.WriteLine($"Ingredient {i} ");
 
                     Console.WriteLine("Please enter the ingredient name: ");
-                    Console.ReadLine();
+                    string ingredientName=Console.ReadLine();
 
                     Console.WriteLine("Please enter the ingredient quantity: ");
-                    Console.ReadLine();
+                    string ingrediantQuant=Console.ReadLine();
 
                     Console.WriteLine("Please enter the unit of measurement(Tablespoon...etc): ");
-                    Console.ReadLine();
+                    string ingredientMeasurement=Console.ReadLine();
 
 
-                    Console.Clear(); 
-                    
+                    Console.Clear();
+
 
 
                 }
 
-            
+
 
             }
-          
-            catch (Exception ex) { 
-            
+
+            catch (Exception ex)
+            {
+
             }
 
 
@@ -67,17 +82,16 @@ for (int i= 1; i <= ingNum; i++){
             int stepNum = int.Parse(stepsNum);
 
             //loops depending on number of steps
-            for(int i=1; i <= stepNum; i++) 
-            { 
-            Console.WriteLine($"Step {i} ");
-         
-                
+            for (int i = 1; i <= stepNum; i++)
+            {
+                Console.WriteLine($"Step {i} ");
+                Console.ReadLine();
 
 
             }
 
         }
-        
+
 
     }
 }
