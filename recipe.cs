@@ -121,6 +121,26 @@ namespace recipeMaker
                 } 
             }
 
+
+            public void ScaleRecipe()
+            {
+
+                Console.WriteLine("Would you like to scale the recipe? (Yes/No)");
+
+                string choice=Console.ReadLine();   
+
+                if(choice == "Yes")
+                {
+
+                    Console.WriteLine("Choose a number and thus its respective scale value");
+                    Console.WriteLine("1: Scale by 0.5");
+                    Console.WriteLine("2: Scale by 2");
+                    Console.WriteLine("3: Scale by 3");
+
+                    string choice2=Console.ReadLine();
+
+                }
+            }
                
             }
 
