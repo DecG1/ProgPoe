@@ -127,13 +127,14 @@ namespace recipeMaker
 
                 Console.WriteLine("Would you like to scale the recipe? (Yes/No)");
 
+
                 string choice = Console.ReadLine();
 
                 if (choice == "Yes")
                 {
                     
                     
-                    double originalQuant= 0;
+                    double originalQuant;
                     string originalMeasurement = "";
                     double ingredientQuant = 0;
                      string ingMeasurement="";
@@ -141,10 +142,14 @@ namespace recipeMaker
                     Console.WriteLine("Please input the quantity you wish to scale");
                     ingredientQuant = int.Parse(Console.ReadLine());
 
+                    originalQuant = ingredientQuant;
+
                     Console.WriteLine("Please input measurement you wish to scale");
                     ingMeasurement=Console.ReadLine();   
 
-                    
+                     originalMeasurement = ingMeasurement;
+
+
                     Console.WriteLine("Choose a number and thus its respective scale value");
                     Console.WriteLine("1: Scale by 0.5");
                     Console.WriteLine("2: Scale by 2");
@@ -182,6 +187,24 @@ namespace recipeMaker
 
 
 Console.WriteLine($"the Scaled quantity is now : {ingredientQuant} and the new measurement is {ingMeasurement}");
+
+
+
+
+                    Console.WriteLine("Would you like to reset the values to the original values you provided? (Yes/No)");
+
+                    string choice3=Console.ReadLine();  
+
+
+                    if(choice3 == "Yes")
+                    {
+                        ingredientQuant = originalQuant;
+
+                        ingMeasurement=originalMeasurement;
+
+
+                        Console.WriteLine($"The quantities and measurements are now reset to: {ingredientQuant} and {ingMeasurement}");
+                    }
                 }
 
 
