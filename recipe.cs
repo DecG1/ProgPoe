@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -16,16 +15,14 @@ namespace recipeMaker
             // array declaration for steps and ingredients 
             public string[] ingredients;
             public string[] steps;
-            public int[] quantity;
-            public int[] measurement;
+
 
             public void RecipeStorage()
             {
 
                 ingredients = new string[0];
                 steps = new string[0];
-                quantity = new int[0];
-                measurement=new int[0]; 
+
 
             }
 
@@ -64,8 +61,7 @@ namespace recipeMaker
                         string ingredientMeasurement = Console.ReadLine();
 
 
-                        quantity[i] = int.Parse(ingrediantQuant);
-                        measurement[i] = int.Parse( ingredientMeasurement);
+
                         ingredients[i] = ingredientName;
 
                         Console.Clear();
@@ -136,6 +132,16 @@ namespace recipeMaker
                 if (choice == "Yes")
                 {
 
+                    double ingredientQuant = 0;
+                     string ingMeasurement="";
+
+                    Console.WriteLine("Please input the quantity you wish to scale");
+                    ingredientQuant = int.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Please input measurement you wish to scale");
+                    ingMeasurement=Console.ReadLine();   
+
+                    
                     Console.WriteLine("Choose a number and thus its respective scale value");
                     Console.WriteLine("1: Scale by 0.5");
                     Console.WriteLine("2: Scale by 2");
@@ -162,17 +168,8 @@ namespace recipeMaker
                         default:
 
                             Console.WriteLine("Please enter a correct scale value");
-                            return;
+                            break;
                     }
-
-
-                    for(int i=0; i <ingredients.Length; i++)
-                    {
-                        quantity[i] =(int)(quantity[i]* scaleAmount);
-                        measurement[i] = (int)(measurement[i] * scaleAmount);
-                    }
-                    Console.WriteLine("Recipe has been scaled accordingly");
-                    
                 }
 
             }
@@ -181,5 +178,6 @@ namespace recipeMaker
     }
 }
     
+
 
 
