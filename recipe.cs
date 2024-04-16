@@ -1,4 +1,16 @@
-﻿using System;
+﻿//Declan 
+//ST10356556
+//Group 2
+
+//References List:
+
+//https://code-maze.com/add-values-to-csharp-array/
+//https://www.w3schools.com/cs/cs_switch.php
+
+
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
