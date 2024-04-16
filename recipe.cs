@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -13,16 +14,18 @@ namespace recipeMaker
         public class Recipe
         {
             // array declaration for steps and ingredients 
-          public  string[] ingredients;
-          public   string[] steps;
-
+            public string[] ingredients;
+            public string[] steps;
+            public int[] quantity;
+            public int[] measurement;
 
             public void RecipeStorage()
             {
 
                 ingredients = new string[0];
                 steps = new string[0];
-
+                quantity = new int[0];
+                measurement=new int[0]; 
 
             }
 
@@ -31,7 +34,7 @@ namespace recipeMaker
             public void RecipeCreator()
             {
 
-               
+
 
                 try
                 {
@@ -49,7 +52,7 @@ namespace recipeMaker
                     {
 
 
-                        Console.WriteLine($"Ingredient {i+1} ");
+                        Console.WriteLine($"Ingredient {i + 1} ");
 
                         Console.WriteLine("Please enter the ingredient name: ");
                         string ingredientName = Console.ReadLine();
@@ -61,7 +64,8 @@ namespace recipeMaker
                         string ingredientMeasurement = Console.ReadLine();
 
 
-
+                        quantity[i] = int.Parse(ingrediantQuant);
+                        measurement[i] = int.Parse( ingredientMeasurement);
                         ingredients[i] = ingredientName;
 
                         Console.Clear();
@@ -91,7 +95,7 @@ namespace recipeMaker
                 //loops depending on number of steps
                 for (int i = 0; i < stepNum; i++)
                 {
-                    Console.WriteLine($"Step {i+1} ");
+                    Console.WriteLine($"Step {i + 1} ");
                     steps[i] = Console.ReadLine();
 
 
@@ -102,14 +106,14 @@ namespace recipeMaker
             public static void RecipeDisplay(string[] ingredients, string[] steps)
             {
 
-                
+
 
                 Console.WriteLine("The recipe has the following ingredients and steps:\n");
 
                 Console.WriteLine("Ingredients:");
-                for(int i = 0; i < ingredients.Length; i++)
+                for (int i = 0; i < ingredients.Length; i++)
                 {
-                    Console.WriteLine($"{i+1}.{ingredients[i]}");
+                    Console.WriteLine($"{i + 1}.{ingredients[i]}");
                 }
 
                 Console.WriteLine("\nSteps:");
@@ -117,8 +121,8 @@ namespace recipeMaker
                 {
                     Console.WriteLine($"{i + 1}. {steps[i]}");
 
-                 
-                } 
+
+                }
             }
 
 
@@ -127,9 +131,9 @@ namespace recipeMaker
 
                 Console.WriteLine("Would you like to scale the recipe? (Yes/No)");
 
-                string choice=Console.ReadLine();   
+                string choice = Console.ReadLine();
 
-                if(choice == "Yes")
+                if (choice == "Yes")
                 {
 
                     Console.WriteLine("Choose a number and thus its respective scale value");
@@ -137,14 +141,45 @@ namespace recipeMaker
                     Console.WriteLine("2: Scale by 2");
                     Console.WriteLine("3: Scale by 3");
 
-                    string choice2=Console.ReadLine();
+                    string choice2 = Console.ReadLine();
 
+                    double scaleAmount;
+                    switch (choice2)
+                    {
+
+                        case "1" :
+                            scaleAmount = 0.5;
+                            break;
+
+                        case "2" :
+                            scaleAmount = 2;
+                            break;
+
+                        case "3" :
+                            scaleAmount = 3;
+                            break;
+
+                        default:
+
+                            Console.WriteLine("Please enter a correct scale value");
+                            return;
+                    }
+
+
+                    for(int i=0; i <ingredients.Length; i++)
+                    {
+                        quantity[i] =(int)(quantity[i]* scaleAmount);
+                        measurement[i] = (int)(measurement[i] * scaleAmount);
+                    }
+                    Console.WriteLine("Recipe has been scaled accordingly");
+                    
                 }
-            }
-               
+
             }
 
         }
     }
+}
+    
 
 
