@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -54,10 +55,10 @@ namespace recipeMaker
                         Console.WriteLine("Please enter the ingredient name: ");
                         string ingredientName = Console.ReadLine();
 
-                        Console.WriteLine("Please enter the ingredient quantity: ");
+                        Console.WriteLine("Please enter the ingredient quantity(Grams): ");
                         string ingrediantQuant = Console.ReadLine();
 
-                        Console.WriteLine("Please enter the unit of measurement(unit of measurement, gram etc...): ");
+                        Console.WriteLine("Please enter the unit of measurement(unit of measurement(Teaspoon etc...): ");
                         string ingredientMeasurement = Console.ReadLine();
 
 
@@ -132,12 +133,12 @@ namespace recipeMaker
 
                 if (choice == "Yes")
                 {
-                    
-                    
+
+
                     double originalQuant;
                     string originalMeasurement = "";
                     double ingredientQuant = 0;
-                     string ingMeasurement="";
+                    string ingMeasurement = "";
 
                     Console.WriteLine("Please input the quantity you wish to scale");
                     ingredientQuant = int.Parse(Console.ReadLine());
@@ -145,9 +146,9 @@ namespace recipeMaker
                     originalQuant = ingredientQuant;
 
                     Console.WriteLine("Please input measurement you wish to scale");
-                    ingMeasurement=Console.ReadLine();   
+                    ingMeasurement = Console.ReadLine();
 
-                     originalMeasurement = ingMeasurement;
+                    originalMeasurement = ingMeasurement;
 
 
                     Console.WriteLine("Choose a number and thus its respective scale value");
@@ -157,19 +158,19 @@ namespace recipeMaker
 
                     string choice2 = Console.ReadLine();
 
-                    double scaleAmount=1;
+                    double scaleAmount = 1;
                     switch (choice2)
                     {
 
-                        case "1" :
+                        case "1":
                             scaleAmount = 0.5;
                             break;
 
-                        case "2" :
+                        case "2":
                             scaleAmount = 2;
                             break;
 
-                        case "3" :
+                        case "3":
                             scaleAmount = 3;
                             break;
 
@@ -179,41 +180,82 @@ namespace recipeMaker
                             break;
                     }
 
-                    ingredientQuant *= scaleAmount;
-
-
-                    ingMeasurement = $"{scaleAmount}x {ingMeasurement}";
-
-
-
-Console.WriteLine($"the Scaled quantity is now : {ingredientQuant} and the new measurement is {ingMeasurement}");
-
-
-
-
-                    Console.WriteLine("Would you like to reset the values to the original values you provided? (Yes/No)");
-
-                    string choice3=Console.ReadLine();  
-
-
-                    if(choice3 == "Yes")
+                    for (int i = 0; i < ingredients.Length; i++)
                     {
-                        ingredientQuant = originalQuant;
+                        Console.WriteLine($"Enter quantity for ingredient {ingredients[i]}:");
+                        double ingredientQuantity = double.Parse(Console.ReadLine());
 
-                        ingMeasurement=originalMeasurement;
+                        Console.WriteLine($"Enter measurement for ingredient {ingredients[i]}:");
+                        string ingredientMeasurement = Console.ReadLine();
 
 
-                        Console.WriteLine($"The quantities and measurements are now reset to: {ingredientQuant} and {ingMeasurement}");
+                        double scaledQuantity = ingredientQuantity * scaleAmount;
+                        string scaledMeasurement = $"{scaleAmount}x {ingredientMeasurement}";
+
+                        Console.WriteLine($"The scaled quantity for ingredient {ingredients[i]} is now: {scaledQuantity} and the new measurement is {scaledMeasurement}");
+
+
+                        ingredientQuantity *= scaleAmount;
+
+
+                        ingredientMeasurement = $"{scaleAmount}x {ingMeasurement}";
+
+
+
+                        Console.WriteLine($"the Scaled quantity is now : {ingredientQuant} and the new measurement is {ingMeasurement}");
+
+
+
+
+                        Console.WriteLine("Would you like to reset the values to the original values you provided? (Yes/No)");
+
+                        string choice3 = Console.ReadLine();
+
+
+                        if (choice3 == "Yes")
+                        {
+                            ingredientQuant = originalQuant;
+
+                            ingMeasurement = originalMeasurement;
+
+
+                            Console.WriteLine($"The quantities and measurements are now reset to: {ingredientQuant} and {ingMeasurement}");
+                        }
                     }
+
                 }
-
-
 
             }
 
+            public void RecipeReset()
+            {
+                Console.WriteLine("Do you want to reset the recipe and start over? (Yes/No)");
+
+                string choice4 = Console.ReadLine();
+
+                if (choice4 == "Yes")
+                {
+                    
+                    ingredients = new string[0];
+                    steps = new string[0];
+
+                    
+                    RecipeCreator();
+                    RecipeDisplay(ingredients,steps);
+                    ScaleRecipe();
+                   
+                }
+                else if (choice4 == "No")
+                {
+                    Console.WriteLine("Exiting");
+                    
+                }
+         
+            }
+        }
         }
     }
-}
+
     
 
 

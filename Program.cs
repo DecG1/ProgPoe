@@ -9,3 +9,5 @@ rc.RecipeCreator();
 recipeMaker.recipe.Recipe.RecipeDisplay(rc.ingredients, rc.steps);
 
 rc.ScaleRecipe();
+
+rc.RecipeReset();
