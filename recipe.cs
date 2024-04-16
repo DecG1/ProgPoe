@@ -131,7 +131,10 @@ namespace recipeMaker
 
                 if (choice == "Yes")
                 {
-
+                    
+                    
+                    double originalQuant= 0;
+                    string originalMeasurement = "";
                     double ingredientQuant = 0;
                      string ingMeasurement="";
 
