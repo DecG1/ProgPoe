@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace recipeMaker
 
             public void RecipeStorage()
             {
-
+                
                 ingredients = new string[0];
                 steps = new string[0];
 
@@ -33,10 +34,10 @@ namespace recipeMaker
             {
 
 
-
+                //try catch block to handle any exceptions
                 try
                 {
-
+                    //prompting user to enter ingredients
                     Console.WriteLine("Please enter Number of ingredients: ");
 
                     string ingNumString = Console.ReadLine();
@@ -77,7 +78,7 @@ namespace recipeMaker
 
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine("Error occured");
                 }
 
 
@@ -100,10 +101,10 @@ namespace recipeMaker
 
             }
 
+
+            //method to display the entered recipe
             public static void RecipeDisplay(string[] ingredients, string[] steps)
             {
-
-
 
                 Console.WriteLine("The recipe has the following ingredients and steps:\n");
 
@@ -122,7 +123,7 @@ namespace recipeMaker
                 }
             }
 
-
+            //method to scale the recipe
             public void ScaleRecipe()
             {
 
@@ -159,6 +160,8 @@ namespace recipeMaker
                     string choice2 = Console.ReadLine();
 
                     double scaleAmount = 1;
+
+                    //switch to choose the scale amount
                     switch (choice2)
                     {
 
@@ -194,7 +197,7 @@ namespace recipeMaker
 
                         Console.WriteLine($"The scaled quantity for ingredient {ingredients[i]} is now: {scaledQuantity} and the new measurement is {scaledMeasurement}");
 
-
+                        //sets the new quantity according to chosen scale
                         ingredientQuantity *= scaleAmount;
 
 
@@ -202,7 +205,8 @@ namespace recipeMaker
 
 
 
-                        Console.WriteLine($"the Scaled quantity is now : {ingredientQuant} and the new measurement is {ingMeasurement}");
+
+                        Console.WriteLine($"the Scaled quantity is now : {ingredientQuantity} and the new measurement is {ingredientMeasurement}");
 
 
 
@@ -211,7 +215,7 @@ namespace recipeMaker
 
                         string choice3 = Console.ReadLine();
 
-
+                        //resets the values to the original one inputted by the user
                         if (choice3 == "Yes")
                         {
                             ingredientQuant = originalQuant;
@@ -226,7 +230,7 @@ namespace recipeMaker
                 }
 
             }
-
+            //reset method to allow the user to clear all entered data and start a new recipe
             public void RecipeReset()
             {
                 Console.WriteLine("Do you want to reset the recipe and start over? (Yes/No)");
@@ -235,11 +239,11 @@ namespace recipeMaker
 
                 if (choice4 == "Yes")
                 {
-                    
+                    //clears the array
                     ingredients = new string[0];
                     steps = new string[0];
 
-                    
+                    //calls to redo the recipe making system
                     RecipeCreator();
                     RecipeDisplay(ingredients,steps);
                     ScaleRecipe();
@@ -247,6 +251,7 @@ namespace recipeMaker
                 }
                 else if (choice4 == "No")
                 {
+                    //exits the process if selected
                     Console.WriteLine("Exiting");
                     
                 }
