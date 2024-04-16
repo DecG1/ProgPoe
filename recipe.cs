@@ -57,7 +57,7 @@ namespace recipeMaker
                         Console.WriteLine("Please enter the ingredient quantity: ");
                         string ingrediantQuant = Console.ReadLine();
 
-                        Console.WriteLine("Please enter the unit of measurement(Tablespoon...etc): ");
+                        Console.WriteLine("Please enter the unit of measurement(unit of measurement, gram etc...): ");
                         string ingredientMeasurement = Console.ReadLine();
 
 
@@ -149,7 +149,7 @@ namespace recipeMaker
 
                     string choice2 = Console.ReadLine();
 
-                    double scaleAmount;
+                    double scaleAmount=1;
                     switch (choice2)
                     {
 
@@ -170,7 +170,18 @@ namespace recipeMaker
                             Console.WriteLine("Please enter a correct scale value");
                             break;
                     }
+
+                    ingredientQuant *= scaleAmount;
+
+
+                    ingMeasurement = $"{scaleAmount}x {ingMeasurement}";
+
+
+
+Console.WriteLine($"the Scaled quantity is now : {ingredientQuant} and the new measurement is {ingMeasurement}");
                 }
+
+
 
             }
 
