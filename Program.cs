@@ -1,13 +1,31 @@
-﻿
+﻿using System;
 
+namespace RecipeMaker
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Recipe myRecipe = new Recipe();
 
+            myRecipe.CreateRecipe();
+            myRecipe.Display();
 
-recipeMaker.recipe.Recipe rc = new recipeMaker.recipe.Recipe();
+            myRecipe.ScaleIngredient();
+            myRecipe.Display();
 
-rc.RecipeCreator();
+            Console.WriteLine("Would you like to reset the recipe and start over? (Yes/No)");
+            string resetChoice = Console.ReadLine().ToLower();
 
-recipeMaker.recipe.Recipe.RecipeDisplay(rc.ingredients, rc.steps);
-
-rc.ScaleRecipe();
-
-rc.RecipeReset();
+            if (resetChoice == "yes")
+            {
+                myRecipe.Reset();
+                Main(args); // Restart the program
+            }
+            else
+            {
+                Console.WriteLine("Exiting");
+            }
+        }
+    }
+}
