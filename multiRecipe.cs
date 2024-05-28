@@ -50,7 +50,9 @@ namespace RecipeMaker
         public void ResetRecipe()
         {
             Console.WriteLine("Enter the number of the recipe you want to reset:");
+
             DisplayRecipes();
+
             int recipeIndex = int.Parse(Console.ReadLine()) - 1;
 
             if (recipeIndex >= 0 && recipeIndex < Recipes.Count)
