@@ -8,22 +8,30 @@ using System.Threading.Tasks;
     {
         public class Ingredient
         {
-            public string Name { get; set; }
-            public double Quantity { get; set; }
-            public string Measurement { get; set; }
+     public string Name { get; set; }
+     public double Quantity { get; set; }
+     public string Measurement { get; set; }
+     public string FoodGroup {  get; set; } 
+     public double Calories {  get; set; }  
 
-            public Ingredient(string name, double quantity, string measurement)
+
+           
+
+            public Ingredient(string name, double quantity, string measurement, string foodGroup, double calories )
             {
                 Name = name;
                 Quantity = quantity;
                 Measurement = measurement;
+                FoodGroup=foodGroup;
+                Calories = calories;
             }
 
         //***********************************************************************************************************************************************
         public override string ToString()
             {
-                return $"{Name} - {Quantity} {Measurement}";
-            }
+            return $"{Quantity} {Measurement} of {Name} (Food Group: {FoodGroup}, Calories: {Calories})";
         }
     }
+        }
+    
 

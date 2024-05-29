@@ -16,9 +16,9 @@ namespace RecipeMaker
             Steps = new List<Step>();
         }
 
-        public void AddIngredient(string name, double quantity, string measurement)
+        public void AddIngredient(string name, double quantity, string measurement, string foodGroup, double calories)
         {
-            Ingredients.Add(new Ingredient(name, quantity, measurement));
+            Ingredients.Add(new Ingredient(name, quantity, measurement, foodGroup,calories));
         }
 
         public void AddStep(int order, string description)
@@ -132,8 +132,14 @@ namespace RecipeMaker
                     Console.WriteLine();
                     Console.Write("Please enter the unit of measurement: ");
                     string ingredientMeasurement = Console.ReadLine();
+                    Console.WriteLine();    
+                    Console.Write("Please enter the food group: ");
+                    string foodGroup = Console.ReadLine();
+                    Console.WriteLine();
+                    Console.Write("Please enter the calories: ");
+                    double calories = double.Parse(Console.ReadLine());
 
-                    AddIngredient(ingredientName, ingredientQuant, ingredientMeasurement);
+                    AddIngredient(ingredientName, ingredientQuant, ingredientMeasurement,foodGroup,calories);
                     Console.Clear();
                 }
 
