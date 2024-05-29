@@ -8,12 +8,14 @@
 //https://www.w3schools.com/cs/cs_switch.php
 //https://stackoverflow.com/questions/6965337/sort-a-list-alphabetically
 //https://www.geeksforgeeks.org/out-parameter-with-examples-in-c-sharp/
+//https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/
 
 
 
 
 
 using System;
+using System.Data.Common;
 using RecipeMaker;
 
 namespace recipeMaker
@@ -47,7 +49,7 @@ namespace recipeMaker
 
                         Recipe addedRecipe= new Recipe();
 
-                        addedRecipe.CreateRecipe();
+                        addedRecipe.CreateRecipe(calWarning);
 
                         recipeBook.AddRecipe(addedRecipe);
 
@@ -87,6 +89,13 @@ namespace recipeMaker
                         break;
                 }
             }
+        }
+
+        public static void calWarning(string warningMessage) 
+        { 
+
+            Console.WriteLine(warningMessage);  
+
         }
     }
 }
