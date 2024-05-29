@@ -5,6 +5,8 @@ namespace RecipeMaker
 {
     public class Recipe
     {
+
+        public string Name { get; set; }
         public List<Ingredient> Ingredients { get; set; }
         public List<Step> Steps { get; set; }
 
@@ -24,8 +26,11 @@ namespace RecipeMaker
             Steps.Add(new Step(order, description));
         }
 
+        //***********************************************************************************************************************************************
+
         public void Display()
         {
+            Console.WriteLine($"Recipe Name: {Name}");
             Console.WriteLine("The recipe has the following ingredients and steps:\n");
 
             Console.WriteLine("Ingredients:");
@@ -94,6 +99,8 @@ namespace RecipeMaker
             }
         }
 
+        //***********************************************************************************************************************************************
+
         public void Reset()
         {
             Ingredients.Clear();
@@ -105,6 +112,11 @@ namespace RecipeMaker
         {
             try
             {
+
+                Console.Write("Please enter the recipe name: ");
+                Name = Console.ReadLine();
+                Console.WriteLine();
+
                 // Prompting user to enter ingredients
                 Console.WriteLine("Please enter Number of ingredients: ");
                 int ingNum = int.Parse(Console.ReadLine());
@@ -113,9 +125,11 @@ namespace RecipeMaker
                 {
                     Console.WriteLine($"Ingredient {i + 1} ");
                     Console.Write("Please enter the ingredient name: ");
+                    Console.WriteLine();
                     string ingredientName = Console.ReadLine();
                     Console.Write("Please enter the ingredient quantity: ");
                     double ingredientQuant = double.Parse(Console.ReadLine());
+                    Console.WriteLine();
                     Console.Write("Please enter the unit of measurement: ");
                     string ingredientMeasurement = Console.ReadLine();
 
@@ -126,6 +140,7 @@ namespace RecipeMaker
                 // Prompt user to enter steps
                 Console.WriteLine("Enter number of Steps:");
                 int stepNum = int.Parse(Console.ReadLine());
+                Console.WriteLine();
 
                 for (int i = 0; i < stepNum; i++)
                 {
