@@ -139,6 +139,11 @@ namespace RecipeMaker
                     Console.Write("Please enter the calories: ");
                     double calories = double.Parse(Console.ReadLine());
 
+                    if (calories > 300)
+                    {
+                        Console.WriteLine("The entered ingredient has more than 300 calories");
+                    }
+
                     AddIngredient(ingredientName, ingredientQuant, ingredientMeasurement,foodGroup,calories);
                     Console.Clear();
                 }
