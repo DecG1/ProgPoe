@@ -8,6 +8,7 @@
 //https://www.w3schools.com/cs/cs_switch.php
 //https://stackoverflow.com/questions/6965337/sort-a-list-alphabetically
 //https://www.geeksforgeeks.org/out-parameter-with-examples-in-c-sharp/
+//https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/
 
 
 
@@ -87,6 +88,13 @@ namespace recipeMaker
                         break;
                 }
             }
+        }
+
+        public static void calWarning(string warningMessage) 
+        { 
+
+            Console.WriteLine(warningMessage);  
+
         }
     }
 }

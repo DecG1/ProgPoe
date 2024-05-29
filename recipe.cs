@@ -5,6 +5,7 @@ namespace RecipeMaker
 {
     public class Recipe
     {
+        public delegate void CalorieWarningDelegate(string warningMessage);
 
         public string Name { get; set; }
         public List<Ingredient> Ingredients { get; set; }
@@ -108,7 +109,7 @@ namespace RecipeMaker
         }
 
         //***********************************************************************************************************************************************
-        public void CreateRecipe()
+        public void CreateRecipe(CalorieWarningDelegate calorieDelegate)
         {
             try
             {
@@ -139,10 +140,12 @@ namespace RecipeMaker
                     Console.Write("Please enter the calories: ");
                     double calories = double.Parse(Console.ReadLine());
 
+
                     if (calories > 300)
                     {
-                        Console.WriteLine("The entered ingredient has more than 300 calories");
+                        calorieDelegate?.Invoke("Warning: This ingredient has over 300 calories.");
                     }
+
 
                     AddIngredient(ingredientName, ingredientQuant, ingredientMeasurement,foodGroup,calories);
                     Console.Clear();
