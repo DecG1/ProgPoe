@@ -24,7 +24,7 @@ namespace recipeMaker
     {
         static void Main(string[] args)
         {
-            RecipeBook recipeBook = new();
+            RecipeBook recipeBook = new RecipeBook();
 
             while (true)
             {
