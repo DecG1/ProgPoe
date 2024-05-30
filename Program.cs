@@ -23,7 +23,12 @@ namespace recipeMaker
     class Program
     {
         static void Main(string[] args)
+
         {
+
+            Console.ForegroundColor = ConsoleColor.Red;
+
+
             RecipeBook recipeBook = new RecipeBook();
 
             while (true)
@@ -47,9 +52,9 @@ namespace recipeMaker
                     case "1":
                         Console.WriteLine();
 
-                        Recipe addedRecipe= new Recipe();
+                        Recipe addedRecipe = new Recipe();
 
-                        addedRecipe.CreateRecipe(calWarning);
+                        addedRecipe.CreateRecipe(CalWarning);
 
                         recipeBook.AddRecipe(addedRecipe);
 
@@ -72,9 +77,9 @@ namespace recipeMaker
 
                         break;
 
-                        case "5":
+                    case "5":
 
-                            recipeBook.ChooseRecipeDisplay();
+                        recipeBook.ChooseRecipeDisplay();
 
                         break;
 
@@ -91,11 +96,12 @@ namespace recipeMaker
             }
         }
 
-        public static void calWarning(string warningMessage) 
-        { 
+        public static void CalWarning(string warningMessage)
+        {
 
-            Console.WriteLine(warningMessage);  
+            Console.WriteLine(warningMessage);
 
         }
+
     }
 }

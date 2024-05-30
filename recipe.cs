@@ -6,10 +6,12 @@ namespace RecipeMaker
     public class Recipe
     {
         public delegate void CalorieWarningDelegate(string warningMessage);
-
+        public CalorieWarningDelegate CalWarning;
         public string Name { get; set; }
         public List<Ingredient> Ingredients { get; set; }
         public List<Step> Steps { get; set; }
+
+        private double totalCalories;
 
         public Recipe()
         {
@@ -20,6 +22,8 @@ namespace RecipeMaker
         public void AddIngredient(string name, double quantity, string measurement, string foodGroup, double calories)
         {
             Ingredients.Add(new Ingredient(name, quantity, measurement, foodGroup,calories));
+
+            totalCalories += calories;
         }
 
         public void AddStep(int order, string description)
@@ -45,7 +49,13 @@ namespace RecipeMaker
             {
                 Console.WriteLine(step);
             }
+
+
+            Console.WriteLine($"\nTotal Calories: {totalCalories}");
+
+
         }
+    
 
         //***********************************************************************************************************************************************
         public void ScaleIngredient()
@@ -110,9 +120,13 @@ namespace RecipeMaker
 
         //***********************************************************************************************************************************************
         public void CreateRecipe(CalorieWarningDelegate calorieDelegate)
+
         {
             try
             {
+
+                CalWarning = calorieDelegate; 
+
 
                 Console.Write("Please enter the recipe name: ");
                 Name = Console.ReadLine();
@@ -146,12 +160,14 @@ namespace RecipeMaker
 
                     if (totalCalories > 300)
                     {
-                        calorieDelegate?.Invoke($"Warning: This Recipe: {Name} has over 300 calories!! ");
+                        CalWarning?.Invoke($"Warning: This Recipe: {Name} has over 300 calories!! ");
+                        Console.WriteLine();
                     }
 
 
+
                     AddIngredient(ingredientName, ingredientQuant, ingredientMeasurement,foodGroup,calories);
-                    Console.Clear();
+                    //Console.Clear();
                 }
 
                 // Prompt user to enter steps
@@ -172,7 +188,9 @@ namespace RecipeMaker
                 Console.WriteLine($"Error occurred: {ex.Message}");
             }
         }
+       
     }
 }
+
 
 //********************************************************************END OF FILE***********************************************************************
